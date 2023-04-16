@@ -13,7 +13,7 @@ import {ScheduleModule} from "@nestjs/schedule";
         ScheduleModule.forRoot(),
 
         ConfigModule.forRoot({
-            envFilePath: ['.env.development']
+            envFilePath: ['.env.development', '.env']
         }),
 
         MikroOrmModule.forRoot({
