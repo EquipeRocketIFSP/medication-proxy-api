@@ -11,7 +11,12 @@ namespace Contracts {
         nomeComercial: string,
         numeroRegistro: string,
         principioAtivo: string,
+        medicamentoReferencia: string,
+        dataVencimentoRegistro: string,
         apresentacoes: MedicationApresentation[]
+        empresa: {
+            razaoSocial: string
+        }
     }
 
     export interface MedicationApresentation {

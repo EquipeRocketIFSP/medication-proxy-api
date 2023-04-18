@@ -21,6 +21,16 @@ export default class Medication {
     @Property({name: 'concentracao'})
     public concentracao: string;
 
+    @Property({name: 'fabricante'})
+    private fabricante: string;
+
+    @Property({name: 'nome_referencia'})
+    private nomeReferencia: string;
+
+    @Property({name: 'vencimento_registro'})
+    private vencimentoRegistro: string;
+
+
     public static factoryFromAnvisaAPIResponse(data: Contracts.MedicationAPIResponse): Medication {
         const medication = new Medication();
 
@@ -29,6 +39,9 @@ export default class Medication {
         medication.principioAtivo = data.principioAtivo;
         medication.viaUso = data.apresentacoes[0].viasAdministracao[0];
         medication.concentracao = data.apresentacoes[0].apresentacao;
+        medication.fabricante = data.empresa.razaoSocial;
+        medication.nomeReferencia = data.medicamentoReferencia;
+        medication.vencimentoRegistro = data.dataVencimentoRegistro.replace('-0300','');
 
         return medication;
     }

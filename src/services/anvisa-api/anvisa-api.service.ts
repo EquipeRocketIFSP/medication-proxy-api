@@ -22,7 +22,8 @@ export class AnvisaApiService {
 
         AnvisaApiService.AXIOS_CONFIG = {
             headers,
-            httpsAgent
+            httpsAgent,
+            timeout: 30000
         }
     }
 
