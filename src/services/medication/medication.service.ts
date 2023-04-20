@@ -3,7 +3,6 @@ import Medication from "../../models/medication";
 import {AnvisaApiService} from "../anvisa-api/anvisa-api.service";
 import MedicineDto from "../../dtos/medicine.dto";
 import {AWSDynamoQueueService} from "../aws-dynamo-queue/aws-dynamo-queue.service";
-import {Cron, CronExpression} from "@nestjs/schedule";
 import {MikroORM} from "@mikro-orm/core";
 
 @Injectable()
@@ -39,7 +38,6 @@ export class MedicationService {
         await this.awsQueueService.add(dto.numero_registro);
     }
 
-    @Cron(CronExpression.EVERY_5_MINUTES)
     private async handlePendingMedications(): Promise<void> {
         const dto = new MedicineDto();
         const logger = new Logger();

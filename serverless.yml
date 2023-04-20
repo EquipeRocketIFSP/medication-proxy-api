@@ -1,0 +1,19 @@
+service: medication-api
+frameworkVersion: '3'
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs16.x
+  apiGateway:
+    shouldStartNameWithService: true
+functions:
+  app:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
+plugins:
+  - serverless-offline
+  - serverless-plugin-optimize
+  - serverless-jetpack

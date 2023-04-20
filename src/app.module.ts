@@ -6,12 +6,9 @@ import {MikroOrmModule} from "@mikro-orm/nestjs";
 import {ConfigModule} from "@nestjs/config";
 import {AWSDynamoQueueService} from './services/aws-dynamo-queue/aws-dynamo-queue.service';
 import * as process from "process";
-import {ScheduleModule} from "@nestjs/schedule";
 
 @Module({
     imports: [
-        ScheduleModule.forRoot(),
-
         ConfigModule.forRoot({
             envFilePath: ['.env.development', '.env']
         }),
